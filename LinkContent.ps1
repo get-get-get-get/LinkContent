@@ -73,10 +73,10 @@ function Get-DirectoryLinkContent {
 
     # TODO: how to do more elegantly (or, how to just accept common parameters?)
     if ($Recurse -eq $False) {
-        $Links = Get-ChildItem $Path -Filter *.lnk -File | Select-Object -Expand FullName
+        $Links = Get-ChildItem $Path -Force -Filter *.lnk -File | Select-Object -Expand FullName
     }
     else {
-        $Links = Get-ChildItem $Path -Filter *.lnk -File -Recurse | Select-Object -Expand FullName
+        $Links = Get-ChildItem $Path -Force -Filter *.lnk -File -Recurse | Select-Object -Expand FullName
     }
 
     Get-LinkContent $Links
