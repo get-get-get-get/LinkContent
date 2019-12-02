@@ -1,16 +1,16 @@
 function Get-Link {
     <#
     .SYNOPSIS
-    Parses content of .lnk file
+    Parses a .lnk file into shortcut object
     .DESCRIPTION
-    'Get-LinkContent' parses link/shortcut objects
+    'Get-Link' parses a .lnk file into shortcut objects
     .PARAMETER Path
     Path to .lnk object
     .EXAMPLE
-    Get-LinkContent -Path C:\Users\hector\AppData\Roaming\Microsoft\Windows\Recent\Restore.lnk
+    Get-Link -Path C:\Users\hector\AppData\Roaming\Microsoft\Windows\Recent\Restore.lnk
     .EXAMPLE
     $Path = "C:\Users\hector\AppData\Roaming\Microsoft\Windows\Recent\Restore.lnk"
-    Get-LinkContent $Path
+    Get-Link $Path
     .INPUTS
     String
     Accepts paths to link/shortcut objects
@@ -41,16 +41,16 @@ function Get-DirectoryLinks {
     .SYNOPSIS
     Parses contents of all .lnk files within directory
     .DESCRIPTION
-    Uses 'Get-Link' to parse all link/shortcut objects within directory
+    Uses 'Get-Link' to parse all .lnk file within directory into shortcut objects
     .PARAMETER Path
-    Path to .lnk object
+    Path to directory
     .PARAMETER Recurse
-    Get link content recursively
+    Recurse into subdirectories
     .EXAMPLE
-    Get-DirectoryLinkContent C:\Users\hector\ -Recurse
+    Get-DirectoryLinks C:\Users\hector\Desktop\
     .EXAMPLE
-    $Path = "C:\Users\hector\AppData\Roaming\Microsoft\Windows\Recent\Restore.lnk"
-    Get-LinkContent -Path $Path
+    $Path = "C:\Users\hector\"
+    Get-DirectoryLinks -Path $Path -Recurse
     .INPUTS
     String
     Accepts paths to directories
@@ -79,5 +79,5 @@ function Get-DirectoryLinks {
         $Links = Get-ChildItem $Path -Force -Filter *.lnk -File -Recurse | Select-Object -Expand FullName
     }
 
-    Get-LinkContent $Links
+    Get-Link $Links
 }
