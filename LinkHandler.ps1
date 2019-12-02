@@ -1,4 +1,4 @@
-function Get-LinkContent {
+function Get-Link {
     <#
     .SYNOPSIS
     Parses content of .lnk file
@@ -36,12 +36,12 @@ function Get-LinkContent {
 }
 
 
-function Get-DirectoryLinkContent {
+function Get-DirectoryLinks {
     <#
     .SYNOPSIS
     Parses contents of all .lnk files within directory
     .DESCRIPTION
-    Uses 'Get-LinkContent' to parse all link/shortcut objects within directory
+    Uses 'Get-Link' to parse all link/shortcut objects within directory
     .PARAMETER Path
     Path to .lnk object
     .PARAMETER Recurse
